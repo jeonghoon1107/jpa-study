@@ -54,8 +54,8 @@ public class UserRepositoryTests {
     public void persist() {
         userRepository.save(user);
         user.setId("hoony");
-        em.persist(user);
-        em.flush();
+        userRepository.persist(user);
+        userRepository.flush();
 
         User target = userRepository.findById(1L).orElseThrow(RuntimeException::new);
         System.out.println(target.getId());
