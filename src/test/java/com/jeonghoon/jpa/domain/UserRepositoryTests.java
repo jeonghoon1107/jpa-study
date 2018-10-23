@@ -40,11 +40,10 @@ public class UserRepositoryTests {
     }
 
     @Test
+    @Transactional
     public void 기본_저장() {
         userRepository.save(user);
         user.setId("hoony");
-        userRepository.save(user);
-
         User target = userRepository.findById(1L).orElseThrow(RuntimeException::new);
         System.out.println(target.getId());
     }
@@ -54,7 +53,6 @@ public class UserRepositoryTests {
     public void persist() {
         userRepository.persist(user);
         user.setId("hoony");
-        userRepository.flush();
         User target = userRepository.findById(1L).orElseThrow(RuntimeException::new);
         System.out.println(target.getId());
     }
