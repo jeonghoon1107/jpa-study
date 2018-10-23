@@ -52,11 +52,9 @@ public class UserRepositoryTests {
     @Test
     @Transactional
     public void persist() {
-        userRepository.save(user);
-        user.setId("hoony");
         userRepository.persist(user);
+        user.setId("hoony");
         userRepository.flush();
-
         User target = userRepository.findById(1L).orElseThrow(RuntimeException::new);
         System.out.println(target.getId());
     }

@@ -36,6 +36,7 @@ public class BaseRepositoryFactoryBean<T extends JpaRepository<S, ID>, S, ID ext
             super(entityManager);
         }
 
+        @SuppressWarnings("unchecked")
         @Override
         protected SimpleJpaRepository<?, ?> getTargetRepository(RepositoryInformation information, EntityManager entityManager) {
             return new BaseRepositoryImpl(getEntityInformation(information.getDomainType()), entityManager);
